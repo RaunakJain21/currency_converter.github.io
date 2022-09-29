@@ -1,3 +1,4 @@
+
 const from_currencyEl = document.getElementById('from_currency');
 const from_ammountEl = document.getElementById('from_ammount');
 const to_currencyEl = document.getElementById('to_currency');
@@ -10,14 +11,20 @@ from_ammountEl.addEventListener('input', calculate);
 to_currencyEl.addEventListener('change', calculate);
 to_ammountEl.addEventListener('input', calculate);
 
+
 exchange.addEventListener('click', () => {
 	const temp = from_currencyEl.value;
 	from_currencyEl.value = to_currencyEl.value;
 	to_currencyEl.value = temp;
+	const temp2 = from_ammountEl.value;
+	from_ammountEl.value= to_ammountEl.value;
+	to_ammountEl.value= temp2;
 	calculate();
 });
 
 function calculate() {
+	if(from_ammountEl.value<0)
+	window.alert("Enter the positive value");
 	const from_currency = from_currencyEl.value;
 	const to_currency = to_currencyEl.value;
 	
